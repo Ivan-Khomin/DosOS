@@ -101,7 +101,7 @@ start:
     mov cx, [dataSectionLba]
     add ax, cx
 
-    mov cl, 1
+    mov cl, [SectorsPerCluster]
     mov dl, [DriveNumber]
     call ReadSectors
     jc ReadFailedError
