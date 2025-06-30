@@ -1,6 +1,9 @@
 org 0x7C00
 bits 16
 
+;
+; FAT header
+;
 jmp short start
 nop
 
@@ -26,16 +29,24 @@ VolumeLabel:            db 'NO NAME    '
 SystemId:               db 'FAT12   '
 
 start:
+    ; setup registers
     xor ax, ax
     mov ds, ax
     mov es, ax
     
+    ; setup stack
     mov ss, ax
     mov sp, 0x7C00
 
+    push es
+    push word .loadingStage2
+    retf
+
+.loadingStage2:
     mov si, msg
     call Print
 
+    ; compute LBA of root directory
     mov ax, [SectorsPerFat]
     mov bl, [FatCount]
     xor bh, bh
@@ -43,6 +54,7 @@ start:
     add ax, [ReservedSectors]
     push ax
 
+    ; compute size of root directory
     mov ax, [RootDirEntries]
     shl ax, 5
     xor dx, dx
@@ -66,7 +78,7 @@ start:
 
 .searchStage2:
     mov si, fileStage2Bin
-    mov cx, 11
+    mov cx, 11                                      ; 11 chars to compare
     push di
     repe cmpsb
     pop di
@@ -80,9 +92,10 @@ start:
     jmp Stage2NotFoundError
 
 .foundStage2:
-    mov ax, [di + 26]
+    mov ax, [di + 26]                               ; first cluster low
     mov [stage2Cluster], ax
 
+    ; load FAR from disk into memory
     mov ax, [ReservedSectors]
     mov cl, [SectorsPerFat]
     mov dl, [DriveNumber]
@@ -136,12 +149,15 @@ start:
     jmp .loadStage2
 
 .executeStage2:
-    mov dl, [DriveNumber]
+    ; executing stage2
+    mov dl, [DriveNumber]                           ; store drive number in dl
 
+    ; setup registers
     mov ax, STAGE2_SEGMENT
     mov ds, ax
     mov es, ax
 
+    ; jump to our stage2
     jmp STAGE2_SEGMENT:STAGE2_OFFSET
 
     jmp WaitToReboot
@@ -149,6 +165,11 @@ start:
     cli
     hlt
 
+;
+; Print text on screen
+; Parameters:
+;   ds:si - string
+;
 Print:
     push si
     push ax
@@ -171,6 +192,19 @@ Print:
 
     ret
 
+;
+; Working with disk
+;
+
+;
+; Converts LBA address to CHS
+; Parametes:
+;   ax - LBA
+; Returns:
+;   cx [0-5 bits] - sector
+;   cx [6-15 bits] - cylinder
+;   dh - head
+;
 LBA2CHS:
     push ax
     push dx
@@ -195,6 +229,14 @@ LBA2CHS:
     
     ret
 
+;
+; Reads sectors from a disk
+; Parameters:
+;   - ax: LBA address
+;   - cl: number of sectors to read (up to 128)
+;   - dl: drive number
+;   - es:bx: memory address where to store read data
+;
 ReadSectors:
     push ax
     push bx
@@ -233,6 +275,10 @@ ReadSectors:
 
     ret
 
+;
+; Errors
+;
+
 ReadFailedError:
     mov si, msgReadFailed
     call Print
@@ -259,7 +305,7 @@ stage2Cluster:          dw 0
 STAGE2_SEGMENT:         equ 0x0000
 STAGE2_OFFSET:          equ 0x0500
 
-buffer:
-
 times 510 - ($ - $$) db 0
 dw 0AA55h
+
+buffer:
