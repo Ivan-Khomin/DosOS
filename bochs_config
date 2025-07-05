@@ -4,4 +4,4 @@ vgaromimage: file=/home/ivan/Ivan/Toolchain/bochs/bios/VGABIOS-elpin-2.40
 floppya: 1_44=build/floppy_image.img, status=inserted
 boot: floppy
 mouse: enabled=0
-display_library: wx, options="gui_debug"
+display_library: x, options="gui_debug"
