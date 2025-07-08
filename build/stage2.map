@@ -1,0 +1,116 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_udivdi3.o)
+                              /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/stdio.o (__udivdi3)
+/home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_umoddi3.o)
+                              /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/stdio.o (__umoddi3)
+/home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(udivsi3.o)
+                              /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_udivdi3.o) (__udivsi3)
+/home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(umodsi3.o)
+                              /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_udivdi3.o) (__umodsi3)
+/home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(ia16-ldivmodu.o)
+                              /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(udivsi3.o) (__ia16_ldivmodu)
+/home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(ashlsi3.o)
+                              /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_udivdi3.o) (__ashlsi3)
+/home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(lshrsi3.o)
+                              /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_udivdi3.o) (__lshrsi3)
+/home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_clz.o)
+                              /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_udivdi3.o) (__clz_tab)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/main.o
+LOAD /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/stdio.o
+LOAD /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/asm/entry.o
+LOAD /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/asm/x86.o
+LOAD /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a
+                0x0000000000000500                addr = 0x500
+                0x0000000000000500                . = addr
+
+.entry          0x0000000000000500       0x5d
+                0x0000000000000500                __entry_section = .
+ *(.entry)
+ .entry         0x0000000000000500       0x5d /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/asm/entry.o
+                0x0000000000000500                entry
+
+.text           0x0000000000000560     0x187a
+                0x0000000000000560                __text_section = .
+ *(.text)
+ .text          0x0000000000000560       0x11 /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/main.o
+                0x0000000000000560                start
+ .text          0x0000000000000571      0x627 /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/stdio.o
+                0x0000000000000571                putc
+                0x00000000000005d2                puts
+                0x0000000000000600                puts_far
+                0x000000000000064e                printf_unsigned
+                0x0000000000000765                printf_signed
+                0x0000000000000801                printf
+ *fill*         0x0000000000000b98        0x8 
+ .text          0x0000000000000ba0       0x13 /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/asm/x86.o
+                0x0000000000000ba0                x86_Video_WriteCharTTY
+ .text          0x0000000000000bb3      0x8da /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_udivdi3.o)
+                0x0000000000000bb3                __udivdi3
+ .text          0x000000000000148d      0x8a7 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_umoddi3.o)
+                0x000000000000148d                __umoddi3
+ .text          0x0000000000001d34       0x15 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(udivsi3.o)
+                0x0000000000001d34                __udivsi3
+ .text          0x0000000000001d49       0x1a /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(umodsi3.o)
+                0x0000000000001d49                __umodsi3
+ .text          0x0000000000001d63       0x4f /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(ia16-ldivmodu.o)
+                0x0000000000001d63                __ia16_ldivmodu
+ .text          0x0000000000001db2       0x14 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(ashlsi3.o)
+                0x0000000000001db2                __ashlsi3
+ .text          0x0000000000001dc6       0x14 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(lshrsi3.o)
+                0x0000000000001dc6                __lshrsi3
+ .text          0x0000000000001dda        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_clz.o)
+
+.data           0x0000000000001dda        0x0
+                0x0000000000001dda                __data_section = .
+ *(.data)
+ .data          0x0000000000001dda        0x0 /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/main.o
+ .data          0x0000000000001dda        0x0 /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/stdio.o
+ .data          0x0000000000001dda        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_udivdi3.o)
+ .data          0x0000000000001dda        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_umoddi3.o)
+ .data          0x0000000000001dda        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(udivsi3.o)
+ .data          0x0000000000001dda        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(umodsi3.o)
+ .data          0x0000000000001dda        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(ia16-ldivmodu.o)
+ .data          0x0000000000001dda        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(ashlsi3.o)
+ .data          0x0000000000001dda        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(lshrsi3.o)
+ .data          0x0000000000001dda        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_clz.o)
+
+.rodata         0x0000000000001ddc      0x1d8
+                0x0000000000001ddc                __rodata_section = .
+ *(.rodata)
+ .rodata        0x0000000000001ddc        0xe /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/main.o
+ *fill*         0x0000000000001dea        0x2 
+ .rodata        0x0000000000001dec       0xc8 /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/stdio.o
+ .rodata        0x0000000000001eb4      0x100 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_clz.o)
+                0x0000000000001eb4                __clz_tab
+
+.bss            0x0000000000001fb4        0x0
+                0x0000000000001fb4                __bss_section = .
+ *(.bss)
+ .bss           0x0000000000001fb4        0x0 /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/main.o
+ .bss           0x0000000000001fb4        0x0 /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/stdio.o
+ .bss           0x0000000000001fb4        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_udivdi3.o)
+ .bss           0x0000000000001fb4        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_umoddi3.o)
+ .bss           0x0000000000001fb4        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(udivsi3.o)
+ .bss           0x0000000000001fb4        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(umodsi3.o)
+ .bss           0x0000000000001fb4        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(ia16-ldivmodu.o)
+ .bss           0x0000000000001fb4        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(ashlsi3.o)
+ .bss           0x0000000000001fb4        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(lshrsi3.o)
+ .bss           0x0000000000001fb4        0x0 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_clz.o)
+                0x0000000000001fb4                __end = .
+OUTPUT(/home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2.bin binary)
+
+.comment        0x0000000000000000       0x5a
+ .comment       0x0000000000000000       0x12 /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/main.o
+ .comment       0x0000000000000012       0x12 /home/ivan/Ivan/Projects/DosOS_IA16_ELF/build/stage2/c/stdio.o
+ .comment       0x0000000000000024       0x12 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_udivdi3.o)
+ .comment       0x0000000000000036       0x12 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_umoddi3.o)
+ .comment       0x0000000000000048       0x12 /home/ivan/Ivan/Toolchain/ia16-elf/bin/../lib/gcc/ia16-elf/6.3.0/libgcc.a(_clz.o)

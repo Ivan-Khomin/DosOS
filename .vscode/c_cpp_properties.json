@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        },
+        {
+            "name": "ia16-elf",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "__far=",
+                "__FAR="
+            ],
+            "compilerPath": "/home/ivan/Ivan/Toolchain/ia16-elf/bin/ia16-elf-gcc",
+            "cStandard": "c99",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
