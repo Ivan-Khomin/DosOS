@@ -1,7 +1,5 @@
 bits 16
 
-section .text
-
 global x86_Video_WriteCharTTY
 x86_Video_WriteCharTTY:
     push bp
