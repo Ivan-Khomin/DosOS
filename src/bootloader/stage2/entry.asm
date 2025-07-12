@@ -13,9 +13,10 @@ entry:
     mov ss, ax
     mov sp, 0
     mov bp, sp
+    
+    call EnableA20
     sti
 
-    call EnableA20
 
     ; put boot drive in dl, send it as argument to start function
     xor dx, dx
