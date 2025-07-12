@@ -12,11 +12,12 @@ $(BUILD_DIR)/floppy_image.img: bootloader kernel
 	@dd if=/dev/zero of=$@ bs=512 count=2880
 	@mkfs.fat -F 12 -n "DOSOS" $@
 	@dd if=$(BUILD_DIR)/stage1.bin of=$@ conv=notrunc
-	@mcopy -i $@ $(BUILD_DIR)/stage2.bin "::stage2.bin"
-	@mcopy -i $@ $(BUILD_DIR)/kernel.bin "::kernel.bin"
-	@mcopy -i $@ $(IMAGE_DIR)/test.txt "::test.txt"
+	@mmd -i $@ "::dos"
+	@mcopy -i $@ $(BUILD_DIR)/kernel.bin "::dos/kernel.bin"
 	@mmd -i $@ "::mydir"
 	@mcopy -i $@ $(IMAGE_DIR)/test.txt "::mydir/test.txt"
+	@mcopy -i $@ $(BUILD_DIR)/stage2.bin "::stage2.bin"
+	@mcopy -i $@ $(IMAGE_DIR)/test.txt "::test.txt"
 	@echo "Created -->" $@
 
 # Bootloader

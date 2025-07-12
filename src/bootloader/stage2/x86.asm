@@ -153,9 +153,9 @@ x86_Disk_Read:
 
     mov al, [bp + 12]                       ; sectors count
 
-    mov bx, [bp + 14]                       ; es:bx - far pointer
+    mov bx, [bp + 16]                       ; es:bx - far pointer
     mov es, bx                              ; segment
-    mov bx, [bp + 16]                       ; offset
+    mov bx, [bp + 14]                       ; offset
     
     ; call int13h
     mov ah, 02h
