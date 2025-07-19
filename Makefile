@@ -1,4 +1,4 @@
-include config/env.mk
+include scripts/config.mk
 
 .PHONY: all floppy_image bootloader kernel always clean
 
