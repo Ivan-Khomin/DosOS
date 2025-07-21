@@ -18,24 +18,24 @@ bool Disk_Initialize(Disk* disk, uint8_t driveNumber)
     return true;
 }
 
-void Disk_LBATOCHS(Disk* disk, uint32_t lba, uint16_t* cylinderOut, uint16_t* sectorOut, uint16_t* headOut)
+void Disk_LBATOCHS(Disk* disk, uint32_t lba, uint16_t* cylinder, uint16_t* sector, uint16_t* head)
 {
     // compute cylinder
-    *cylinderOut = lba / (disk->heads * disk->sectors);
+    *cylinder = lba / (disk->heads * disk->sectors);
     // compute sector
-    *sectorOut = (lba % disk->sectors) + 1;
+    *sector = (lba % disk->sectors) + 1;
     // comput head
-    *headOut = (lba / disk->sectors) % disk->heads;
+    *head = (lba / disk->sectors) % disk->heads;
 }
 
-bool Disk_ReadSectors(Disk* disk, uint32_t lba, uint8_t sectors, void far* dataOut)
+bool Disk_Read(Disk* disk, uint32_t lba, uint8_t sectors, void far* data)
 {
     uint16_t cylinder, sector, head;
     Disk_LBATOCHS(disk, lba, &cylinder, &sector, &head);
 
     for (int i = 0; i < 3; i++)
     {
-        if (x86_Disk_Read(disk->drive, cylinder, sector, head, sectors, dataOut))
+        if (x86_Disk_Read(disk->drive, cylinder, sector, head, sectors, data))
             return true;
 
         x86_Disk_Reset(disk->drive);

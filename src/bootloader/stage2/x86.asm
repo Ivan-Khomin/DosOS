@@ -29,10 +29,10 @@ x86_Video_WriteCharTTY:
 
 ;
 ; Prototype: bool ASMCALL x86_Disk_GetDriveParameters(uint8_t drive,
-;                                         uint8_t* driveTypeOut,
-;                                         uint16_t* cylindersOut,
-;                                         uint16_t* sectorsOut,
-;                                         uint16_t* headsOut)
+;                                         uint8_t* driveType,
+;                                         uint16_t* cylinders,
+;                                         uint16_t* sectors,
+;                                         uint16_t* heads)
 ; Get drive parameters
 ;
 global x86_Disk_GetDriveParameters
@@ -125,7 +125,7 @@ x86_Disk_Reset:
 ;                   uint16_t sector,
 ;                   uint16_t head,
 ;                   uint8_t count,
-;                  void far* dataOut)
+;                  void far* data)
 ; Read data from disk
 ;
 global x86_Disk_Read
